@@ -1,6 +1,6 @@
 {
   "name": "gulp-svg-smart",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Gulp wrapper for svg-smart plus implementation of common gulp tasks.",
   "main": "index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   "bugs": {
     "url": "https://github.com/websemantics/gulp-svg-smart/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "gulp-svg2png": "*",
     "gulp-favicons": "*",
     "gulp-svg-sprite": "*",

@@ -3,7 +3,7 @@
  *   / ____ |  /  _  ____/   ____   / __/ /  |/  / / _ |   / _ \  /_  __/
  *   \ \  | | / / / / __    /___/  _\ \  / /|_/ / / __ |  / , _/   / /
  *  __\ \ | |/ / / (_/ /          /___/ /_/  /_/ /_/ |_| /_/|_|   /_/
- * /____/ |___/  \____/ GULP PLUGIN v0.1.4
+ * /____/ |___/  \____/ GULP PLUGIN v0.1.5
  *
  * Gulp wrapper and pre-packged Gulp Tasks for svg-smart node.js module.
  * For more information see [SVG SMART](https://github.com/websemantics/svg-smart)
@@ -33,7 +33,7 @@ gulp.task('svg-smart-tasks', ['svg-smart-sprite'], function() {
   return gulp.src(resources.html.template)
     .pipe(template({ext:"tmp", data: resources}))
     .pipe(rename(resources.html.filename))
-    .pipe(gulp.dest(resources.html.dest));
+    .pipe(gulp.dest(resources.dist + "/" + resources.html.dest));
 });
 
 // ---------------------------------------------------
@@ -44,7 +44,7 @@ gulp.task('svg-smart-sprite', ['svg-smart-icon'], function() {
   for (var i in resources.sprite) {
       stream = gulp.src(resources.sprite[i].source)
           .pipe(sprite(resources.sprite[i].config))
-          .pipe(gulp.dest(resources.sprite[i].dest));
+          .pipe(gulp.dest(resources.dist + "/" + resources.sprite[i].dest));
   }
   return stream;
 });
@@ -58,7 +58,7 @@ gulp.task('svg-smart-icon', ['svg-smart-png'], function() {
     stream =  gulp.src(resources.icon[i].source)
         .pipe(favicons(resources.icon[i].config))
         .on('error', function(){})
-        .pipe(gulp.dest(resources.icon[i].dest));
+        .pipe(gulp.dest(resources.dist + "/" + resources.icon[i].dest));
   }
   return stream;
 });
@@ -72,7 +72,7 @@ gulp.task('svg-smart-png', ['svg-smart-svg'], function() {
       stream = gulp.src(resources.png[i].source)
           .pipe(svg2png([resources.png[i].scale]))
           .pipe(rename(resources.png[i].filename + "." + resources.png[i].extension))
-          .pipe(gulp.dest(resources.png[i].dest));
+          .pipe(gulp.dest(resources.dist + "/" + resources.png[i].dest));
   }
   return stream;
 });
@@ -87,7 +87,7 @@ gulp.task('svg-smart-svg', function() {
           .pipe(template({ext:"tmp", data: resources.svg[i].data}))
           .pipe(minify())
           .pipe(rename(resources.svg[i].filename + "." + resources.svg[i].extension))
-          .pipe(gulp.dest(resources.svg[i].dest));
+          .pipe(gulp.dest(resources.dist + "/" + resources.svg[i].dest));
   }
   return stream;
 });

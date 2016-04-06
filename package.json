@@ -1,6 +1,6 @@
 {
   "name": "gulp-svg-smart",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Gulp wrapper for svg-smart plus implementation of common gulp tasks.",
   "main": "index.js",
   "scripts": {

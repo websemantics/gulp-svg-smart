@@ -1,0 +1,5 @@
+0.1.4
+  date: 2016-04-06
+  changes:
+  - Provide 4 default Tasks
+  - Full implementation of svg-smart

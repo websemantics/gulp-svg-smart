@@ -1,2 +1,3 @@
-# gulp-svg-smart
-Gulp plugin for svg-sprites module to generates all your svg, png, icon and svg sprites needs using a data-driven svg template system
+# Gulp SVG Smart
+
+Gulp wrapper for svg-smart node.js module, plus implementation of common gulp tasks.

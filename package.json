@@ -1,0 +1,45 @@
+{
+  "name": "gulp-svg-smart",
+  "version": "0.1.0",
+  "description": "Gulp wrapper for svg-smart plus implementation of common gulp tasks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/websemantics/gulp-svg-smart.git"
+  },
+  "keywords": [
+    "gulp",
+    "gulpplugin",
+    "svg",
+    "template",
+    "data",
+    "png",
+    "icon",
+    "sprites",
+    "assets",
+    "media"
+  ],
+  "author": {
+    "name": "Adnan M.Sagar, PhD.",
+    "email": "adnan@websemantics.ca"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/websemantics/gulp-svg-smart/issues"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-svg2png": "*",
+    "gulp-favicons": "*",
+    "gulp-svg-sprite": "*",
+    "gulp-nunjucks-render": "*",
+    "gulp-svgmin": "*",
+    "gulp-rename": "*",
+    "gulp-print": "*",
+    "svg-smart": "*"
+  },
+  "homepage": "https://github.com/websemantics/gulp-svg-smart#readme"
+}

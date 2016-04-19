@@ -30,10 +30,14 @@
 // TASK : default: [svg-smart-tasks] - Generate preview page, index.html
 // ---------------------------------------------------
 gulp.task('svg-smart-tasks', ['svg-smart-sprite'], function() {
-  return gulp.src(resources.html.template)
-    .pipe(template({ext:"tmp", data: resources}))
-    .pipe(rename(resources.html.filename))
-    .pipe(gulp.dest(resources.dist + "/" + resources.html.dest));
+  var stream = gulp;
+  if(resources.html && resources.html.template){
+    stream = gulp.src(resources.html.template)
+      .pipe(template({ext:"tmp", data: resources}))
+      .pipe(rename(resources.html.filename))
+      .pipe(gulp.dest(resources.dist + "/" + resources.html.dest));
+  }
+  return stream;
 });
 
 // ---------------------------------------------------
@@ -41,10 +45,12 @@ gulp.task('svg-smart-tasks', ['svg-smart-sprite'], function() {
 // ---------------------------------------------------
 gulp.task('svg-smart-sprite', ['svg-smart-icon'], function() {
   var stream = gulp;
-  for (var i in resources.sprite) {
-      stream = gulp.src(resources.sprite[i].source)
-          .pipe(sprite(resources.sprite[i].config))
-          .pipe(gulp.dest(resources.dist + "/" + resources.sprite[i].dest));
+  if(resources.sprite){
+    for (var i in resources.sprite) {
+        stream = gulp.src(resources.sprite[i].source)
+            .pipe(sprite(resources.sprite[i].config))
+            .pipe(gulp.dest(resources.dist + "/" + resources.sprite[i].dest));
+    }
   }
   return stream;
 });
@@ -54,11 +60,13 @@ gulp.task('svg-smart-sprite', ['svg-smart-icon'], function() {
 // ---------------------------------------------------
 gulp.task('svg-smart-icon', ['svg-smart-png'], function() {
   var stream = gulp;
-  for (var i in resources.icon) {
-    stream =  gulp.src(resources.icon[i].source)
-        .pipe(favicons(resources.icon[i].config))
-        .on('error', function(){})
-        .pipe(gulp.dest(resources.dist + "/" + resources.icon[i].dest));
+  if(resources.icon){
+    for (var i in resources.icon) {
+      stream =  gulp.src(resources.icon[i].source)
+          .pipe(favicons(resources.icon[i].config))
+          .on('error', function(){})
+          .pipe(gulp.dest(resources.dist + "/" + resources.icon[i].dest));
+    }
   }
   return stream;
 });
@@ -68,11 +76,13 @@ gulp.task('svg-smart-icon', ['svg-smart-png'], function() {
 // ---------------------------------------------------
 gulp.task('svg-smart-png', ['svg-smart-svg'], function() {
   var stream = gulp;
-  for (var i in resources.png) {
-      stream = gulp.src(resources.png[i].source)
-          .pipe(svg2png([resources.png[i].scale]))
-          .pipe(rename(resources.png[i].filename + "." + resources.png[i].extension))
-          .pipe(gulp.dest(resources.dist + "/" + resources.png[i].dest));
+  if(resources.png){
+    for (var i in resources.png) {
+        stream = gulp.src(resources.png[i].source)
+            .pipe(svg2png([resources.png[i].scale]))
+            .pipe(rename(resources.png[i].filename + "." + resources.png[i].extension))
+            .pipe(gulp.dest(resources.dist + "/" + resources.png[i].dest));
+    }
   }
   return stream;
 });
